@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CharacterGrid from './CharacterGrid';
 import Header from './Header';
-import Limit from './limit';
-import Search from './Search';
+import Limit from './common/limit';
+import Search from './common/Search';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
 

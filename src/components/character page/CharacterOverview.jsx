@@ -1,11 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 const CharacterOverview = ({item}) => {
+
+    const [imgExt, setImgExt] = useState('');
+
+    useEffect(()=>{
+        if(window.innerWidth < 450){
+            setImgExt('/portrait_incredible.jpg');
+        }
+        else{
+            setImgExt('/standard_incredible.jpg');
+        }
+    },[])
+
     return (
     <div>
         <div className='grid grid-cols-2 w-full p-5 md:px-12 md:pt-12'>
-            <img className='w-full md:w-3/4 justify-self-center' src={item.thumbnail.path + '/standard_incredible.jpg'} alt="" />
-            <div className='px-5 flex-col flex  justify-center'>
+            <img className='w-full md:w-3/4 justify-self-center' src={item.thumbnail.path + imgExt} alt="" />
+            <div className='pl-5 flex-col flex  justify-center'>
                 <h2 className='my-2 sm:text-2xl lg:text-3xl lg:my-5'> <strong>Name : </strong> {item.name} </h2>
                 <h2 className='my-2 sm:text-2xl lg:text-3xl lg:my-5'><strong>Comics : </strong> {item.comics.available} </h2>
                 <h2 className='my-2 sm:text-2xl lg:text-3xl lg:my-5'><strong>Events : </strong> {item.events.available} </h2>

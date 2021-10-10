@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CharacterOverview from './CharacterOverview';
-import ComicsGrid from '../ComicGrid';
+import ComicGrid from './CharacterComicsGrid' ;
+import CharacterEventsGrid from './CharacterEventsGrid';
+import { Link } from 'react-router-dom';
 
 const CharacterPage = (props) => {
 
@@ -30,8 +32,25 @@ const CharacterPage = (props) => {
 
             <h1 className='w-2/4 mt-5 mx-auto text-center py-5 text-2xl sm:text-4xl bg-gradient-to-r from-transparent via-black to-transparent'> Character Comics </h1>
             {item.map(item => (
-                <ComicsGrid key={item.id} item={item} />
+                <ComicGrid key={item.id} item={item} />
+                ))}
+            
+            <div className='w-full text-center mb-20'>
+                <p className='w-2/4 text-xl sm:text-2xl text-center mx-auto transform sm:hover:scale-110 transition-transform'>
+                    <Link className='' to={`/characterComics/${charID}`} > See all comics for this Character here &#8594;</Link>
+                </p>
+            </div>
+
+            <h1 className='w-2/4 mt-5 mx-auto text-center py-5 text-2xl sm:text-4xl bg-gradient-to-r from-transparent via-black to-transparent'> Character Events </h1>
+            {item.map(item =>(
+                <CharacterEventsGrid key={item.id} item={item}  />
             ))}
+
+            <div className='w-full text-center mt-5 mb-20'>
+                <p className='w-2/4 text-xl sm:text-2xl text-center mx-auto transform sm:hover:scale-110 transition-transform'>
+                    <Link className='' to={`/characterEvents/${charID}`} > See all events for this Character here &#8594;</Link>
+                </p>
+            </div>
         </div>
     )
 }
