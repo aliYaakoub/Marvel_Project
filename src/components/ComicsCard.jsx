@@ -3,7 +3,7 @@ import React from 'react'
 const ComicsCard = ({item}) => {
     return (
         <div className='border border-white w-full inline-block bg-black text-2xl text-white'>
-            <img src={item.thumbnail.path + '.jpg'} alt="" className='w-full mb-5' />
+            <img src={item.thumbnail.path + '/portrait_uncanny.jpg'} alt="" className='w-full mb-5' />
             <div className='text-center'>
                 <h1 className=' mb-5 px-5'>{item.title}</h1>
                 {!item.events.items.length ? <p className=' mb-5 px-5'>no events in this comic</p> :

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const EventCard = ({item}) => {
+const SeriesCard = ({item}) => {
 
     // const [imgFormat, setImgFormat] = useState('')
 
@@ -19,11 +19,15 @@ const EventCard = ({item}) => {
             <div className='w-full p-5'>
                 <h2 className='pb-3'><strong>Title : </strong>{item.title}</h2>
                 <h2 className="pb-3"><strong>Comics : </strong>{item.comics.available}</h2>
-                <h2 className="pb-3"><strong>Series : </strong>{item.series.available}</h2>
+                <h2 className="pb-3"><strong>Events : </strong>{item.events.available}</h2>
                 <h2 className="pb-3"><strong>Stories : </strong>{item.stories.available}</h2>
-                <h2 className="pb-3"><strong>Start Date : </strong>{item.start.slice(0,10)}</h2>
-                <h2 className="pb-3"><strong>End Date : </strong>{item.end.slice(0,10)}</h2>
-                {/* {item.description.length === 0 ? 
+                <h2 className="pb-3"><strong>Start Year : </strong>{item.startYear}</h2>
+                <h2 className="pb-3"><strong>End Year : </strong>{item.endYear}</h2>
+                {item.type.length === 0 ? 
+                    <h1 className='pb-3'>type not specified</h1>:
+                    <h2 className="pb-3"><strong>type : </strong>{item.type}</h2>
+                }
+                {/* {!item.description ? 
                     <h2 className='pb-3'>no description available</h2>:
                     <h2 className='pb-3'><strong>Description : </strong><p>{item.description}</p></h2>
                 } */}
@@ -32,4 +36,4 @@ const EventCard = ({item}) => {
     )
 }
 
-export default EventCard
+export default SeriesCard

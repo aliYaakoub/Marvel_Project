@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Limit from './common/limit';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
+import LoadingLogo from '../components/common/loadingLogo';
 
 const ComicGridFull = (props) => {
 
@@ -51,7 +52,7 @@ const ComicGridFull = (props) => {
             <div><Link to={`/character/${charID}`} className='rounded-br-lg text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
 
             <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
-            {isLoading ? <h1 className='w-full text-center text-3xl text-white mt-10'> loading... </h1>:
+            {isLoading ? <LoadingLogo/>:
                 <div>
                     {items.length===0 ? 
                     <div className='flex items-center justify-center h-screen'>

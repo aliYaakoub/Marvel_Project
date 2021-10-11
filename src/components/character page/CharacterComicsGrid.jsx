@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ComicsCard from '../ComicsCard';
 import { Link } from 'react-router-dom';
+import LoadingLogo from '../common/loadingLogo';
 
 const CharacterComicsGrid = (props) => {
 
@@ -25,7 +26,7 @@ const CharacterComicsGrid = (props) => {
     return (
         <div>
             <div><Link to='/' className='text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
-            {isLoading ? <h1 className='w-full text-center text-white mt-10'> loading... </h1>:
+            {isLoading ? <LoadingLogo/>:
                 <div>
                     {items.length===0 ? 
                     <div className='flex items-center justify-center h-screen'>

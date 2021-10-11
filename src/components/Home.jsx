@@ -56,6 +56,7 @@ const Home = () => {
                 />
                 <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
             </div>
+            {/* <h1></h1> */}
             <CharacterGrid items={paginatedItems} isLoading={isLoading} />
             <Pagination
                 itemsCount={items.length}
