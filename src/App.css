@@ -17,6 +17,12 @@ body{
     height: 400px;
     perspective: 1000px;
   }
+  .card-S{
+    cursor: pointer;
+    background-color: transparent;
+    height: 450px;
+    perspective: 1000px;
+  }
   @media screen and (max-width: 500px) {
     .card{
       height: 300px;
@@ -45,6 +51,9 @@ body{
   }
   
   .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  .card-S:hover .card-inner{
     transform: rotateY(180deg);
   }
   

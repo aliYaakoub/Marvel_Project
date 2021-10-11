@@ -14,8 +14,8 @@ const StoriesCard = ({item}) => {
     // },[])
 
     return (
-        <div className='card w-full flex flex-col text-2xl text-white'>
-            <div className='card-inner w-full '>
+        <div className='card-S w-full flex flex-col text-2xl text-white'>
+            <div className='card-inner w-full'>
                 <div className="card-front p-5 border border-white overflow-hidden rounded-xl">
                     <h2 className='pb-3'><strong>Title : </strong>{item.title}</h2>
                     <h2 className='pb-3'><strong>Characters : </strong>{item.characters.available}</h2>

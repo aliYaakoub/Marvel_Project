@@ -25,7 +25,6 @@ const CharacterComicsGrid = (props) => {
 
     return (
         <div>
-            <div><Link to='/' className='text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
             {isLoading ? <LoadingLogo/>:
                 <div>
                     {items.length===0 ? 

@@ -24,7 +24,6 @@ const CharacterStoriesGrid = (props) => {
 
     return (
         <div>
-            <div><Link to='/' className='text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
             {isLoading ? <LoadingLogo/>:
                 <div>
                     {items.length===0 ? 
@@ -32,8 +31,9 @@ const CharacterStoriesGrid = (props) => {
                     </div> 
                     : 
                     <div className='w-full text-center text-3xl mt-5 text-white'>
-                        <h1 className='mt-12  ' >number of stories displayed : {items.length}</h1>
+                        <h1 className='mt-12 text-xl sm:text-3xl ' >number of stories displayed : {items.length}</h1>
                         <div className='grid grid-cols-1 mt-5 gap-10 md:grid-cols-2 xlg:grid-cols-3 p-5'>
+                        <h1 className='mb-5 w-full text-xl text-center md:hidden'>press and hold on the card to flip it</h1>
                             {items.map(item => (
                                 <StoriesCard key={item.id} item={item} />
                             ))}

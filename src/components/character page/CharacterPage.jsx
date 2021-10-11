@@ -37,6 +37,7 @@ const CharacterPage = (props) => {
         <div>
             {isLoading ? <div className='flex h-screen items-center justify-center'><LoadingLogo/></div>:
             <div className='flex flex-col text-white'>
+                <div><Link to='/' className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
                 <h1 className='w-2/4 mt-5 mx-auto text-center py-5 text-2xl sm:text-4xl bg-gradient-to-r from-transparent via-black to-transparent'> Character Overview </h1>
                 {item.map(item =>(
                     <CharacterOverview key={item.id} item={item}  />

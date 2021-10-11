@@ -43,7 +43,7 @@ const SeriesGrid = (props) => {
 
     return (
         <div className='text-white mt-20'>
-            <div><Link to={`/character/${charID}`} className='text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
+            <div><Link to={`/character/${charID}`} className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
             
             <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
             {isLoading ? <LoadingLogo /> : 
@@ -51,10 +51,13 @@ const SeriesGrid = (props) => {
                     <div className='flex items-center text-center justify-center w-full text-white h-screen sm:text-2xl'>
                         <h2 className='w-full'>sorry there is no series available for this character</h2>
                     </div>:
-                    <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
-                    {paginatedItems.map(item => (
-                        <SeriesCard key={item.id} item={item} />
-                        ))}
+                    <div>
+                        <h1 className='text-2xl w-full text-center' >number of series displayed : {items.length}</h1>
+                        <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
+                        {paginatedItems.map(item => (
+                            <SeriesCard key={item.id} item={item} />
+                            ))}
+                        </div>
                     </div>
             }
             <Pagination

@@ -13,7 +13,7 @@ const StoriesGrid = (props) => {
     const [limit, setLimit] = useState(20);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(3);
+    const [pageSize, setPageSize] = useState(6);
 
     const hash = '95e95c40e973659f8d7dceea370df138';
     const charID = props.match.params.id;
@@ -34,27 +34,30 @@ const StoriesGrid = (props) => {
     function handleLimitChange(value){
         setLimit(value);
         if(value > 40){
-            setPageSize(6);
+            setPageSize(12);
         }
         else{
-            setPageSize(3)
+            setPageSize(6)
         }
     }
 
     return (
         <div className='text-white mt-20'>
-            <div><Link to={`/character/${charID}`} className='text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
-            
+            <div><Link to={`/character/${charID}`} className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
             <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
             {isLoading ? <LoadingLogo /> : 
                 items.length === 0 ?
-                    <div className='flex items-center text-center justify-center w-full text-white h-screen sm:text-2xl'>
+                <div className='flex items-center text-center justify-center w-full text-white h-screen sm:text-2xl'>
                         <h2 className='w-full'>sorry there is no stories available for this character</h2>
                     </div>:
-                    <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
-                    {paginatedItems.map(item => (
-                        <StoriesCard key={item.id} item={item} />
-                        ))}
+                    <div>
+                        <h1 className='mt-12 text-2xl w-full text-center' >number of stories displayed : {items.length}</h1>
+                        <h1 className='mb-5 w-full text-xl text-center md:hidden'>press and hold on the card to flip it</h1>
+                        <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
+                        {paginatedItems.map(item => (
+                            <StoriesCard key={item.id} item={item} />
+                            ))}
+                        </div>
                     </div>
             }
             <Pagination
