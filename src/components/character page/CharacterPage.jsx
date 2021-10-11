@@ -6,6 +6,7 @@ import CharacterEventsGrid from './CharacterEventsGrid';
 import CharacterSeriesGrid from './CharacterSeriesGrid';
 import { Link } from 'react-router-dom';
 import LoadingLogo from '../common/loadingLogo';
+import CharacterStoriesGrid from './CharacterStoriesGrid';
 
 const CharacterPage = (props) => {
 
@@ -69,6 +70,17 @@ const CharacterPage = (props) => {
                 <div className='w-full text-center mt-5 mb-20'>
                     <p className='w-2/4 text-xl sm:text-2xl text-center mx-auto transform sm:hover:scale-110 transition-transform'>
                         <Link className='' to={`/characterSeries/${charID}`} > See all series for this Character here &#8594;</Link>
+                    </p>
+                </div>
+
+                {/* stories area */}
+                <h1 className='w-2/4 mt-5 mx-auto text-center py-5 text-2xl sm:text-4xl bg-gradient-to-r from-transparent via-black to-transparent'> Character stories </h1>
+                {item.map(item =>(
+                    <CharacterStoriesGrid key={item.id} item={item}  />
+                ))}
+                <div className='w-full text-center mt-5 mb-20'>
+                    <p className='w-2/4 text-xl sm:text-2xl text-center mx-auto transform sm:hover:scale-110 transition-transform'>
+                        <Link className='' to={`/characterStories/${charID}`} > See all stories for this Character here &#8594;</Link>
                     </p>
                 </div>
             </div>
