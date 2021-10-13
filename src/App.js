@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import ComicGridFull from './components/ComicsGrid';
 import CharacterPage from './components/character page/CharacterPage';
@@ -15,13 +15,12 @@ function App() {
     return (
       <div>
         <Switch>
-          <Route path='/home' component={Home} exact />
+          <Route path='/' component={Home} exact />
           <Route path='/character/:id' component={CharacterPage} />
           <Route path='/characterComics/:id' component={ComicGridFull} />
           <Route path='/characterEvents/:id' component={EventsGrid} />
           <Route path='/characterSeries/:id' component={SeriesGrid} />
           <Route path='/characterStories/:id' component={StoriesGrid} />
-          <Redirect from='/' to='/home' />
         </Switch>
       </div>
     );
