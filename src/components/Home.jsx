@@ -38,6 +38,10 @@ const Home = () => {
         fetch();
     },[searchText,limit,offset]);
 
+    useEffect(()=>{
+        setOffset(0);
+    },[searchText])
+
     function handleLimitChange(value){
         setLimit(value);
         setOffset(0);
