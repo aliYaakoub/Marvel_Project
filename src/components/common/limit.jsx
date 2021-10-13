@@ -33,7 +33,7 @@ const Limit = (props) => {
                     />
                 </div>
                 <button 
-                    className="transition-transform bg-red-600 w-48 h-14 rounded-2xl shadow-lg px-3 py-1 mx-3 transform active:bg-red-500 hover:scale-105"
+                    className="transition-transform bg-red-600 w-48 h-14 rounded-2xl shadow-lg px-3 py-1 mx-3 transform active-limit hover:scale-105"
                     onClick={()=>submitValue()}
                 >
                     set limit

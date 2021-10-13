@@ -94,3 +94,6 @@ body{
       object-fit: contain;
     }
   }
+  .active-limit{
+    transform: scale(0.95);
+  }

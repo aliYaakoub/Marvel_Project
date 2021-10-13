@@ -6,7 +6,7 @@ const CharacterCard = ({ item }) => {
         <div className='card'>
             <Link to={`/character/${item.id}`} >
                 <div className="card-inner rounded-xl">
-                    <div className="card-front">
+                    <div className="card-front bg-black">
                         <img src={item.thumbnail.path + '/standard_incredible.jpg'} alt="" className="w-full rounded-xl" />
                     </div>
                     <div className="card-back relative rounded-xl overflow-hidden">
