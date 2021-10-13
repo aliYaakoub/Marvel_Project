@@ -16,7 +16,7 @@ const StoriesGrid = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(6);
     const [offset, setOffset] = useState(0);
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const [max, setMax] = useState(0);
 
     const hash = '95e95c40e973659f8d7dceea370df138';
@@ -29,7 +29,7 @@ const StoriesGrid = (props) => {
             const result = await axios(`https://gateway.marvel.com:443/v1/public/characters/${charID}/stories?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=${limit}&offset=${offset}`)
             setItems(result.data.data.results);
             console.log(result.data.data.results);
-            // setData(result.data);
+            setData(result.data);
             console.log(result.data);
             setMax(result.data.data.total);
             setIsLoading(false);
@@ -56,38 +56,43 @@ const StoriesGrid = (props) => {
     }
 
     return (
-        <div className='text-white mt-20'>
-            <div><Link to={`/character/${charID}`} className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
-            <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
-            {isLoading ? <LoadingLogo /> : 
-                items.length === 0 ?
-                <div className='flex items-center text-center justify-center w-full text-white h-screen sm:text-2xl'>
-                        <h2 className='w-full'>sorry there is no stories available for this character</h2>
-                    </div>:
-                    <div>
-                        <h1 className='mt-12 text-2xl w-full text-center' >number of stories displayed : {items.length}</h1>
-                        <h1 className='mb-5 w-full text-xl text-center md:hidden'>press and hold on the card to flip it</h1>
-                        <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
-                        {paginatedItems.map(item => (
-                            <StoriesCard key={item.id} item={item} />
-                            ))}
+        <div>
+            {isLoading ? 
+            <div className='flex items-center justify-center h-screen'><LoadingLogo /></div> :
+            <div className='text-white mt-20'>
+                <div><Link to={`/character/${charID}`} className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
+                <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
+                    {items.length === 0 ?
+                        <div className='flex items-center text-center justify-center w-full text-white mt-20 sm:text-2xl'>
+                            <h2 className='w-full'>sorry there is no stories available for this character</h2>
+                        </div>:
+                        <div>
+                            <h1 className='mt-12 text-2xl w-full text-center' >number of stories displayed : {items.length}</h1>
+                            <h1 className='mb-5 w-full text-xl text-center md:hidden'>press and hold on the card to flip it</h1>
+                            <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 p-5'>
+                            {paginatedItems.map(item => (
+                                <StoriesCard key={item.id} item={item} />
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    }
+                <Pagination
+                    itemsCount={items.length}
+                    currPage={currentPage}
+                    pageSize={pageSize}
+                    onPageChange={(page)=>setCurrentPage(page)}
+                />
+                <Offset
+                    limit={limit}
+                    currentPage={offset}
+                    pagesCount={max}
+                    max={max}
+                    handleNext={()=>handleNext()}
+                    handlePrev={()=>handlePrev()}
+                />
+                <p className='w-full text-center pb-10'>{data.attributionText}</p>
+            </div>
             }
-            <Pagination
-                itemsCount={items.length}
-                currPage={currentPage}
-                pageSize={pageSize}
-                onPageChange={(page)=>setCurrentPage(page)}
-            />
-            <Offset 
-                limit={limit} 
-                currentPage={offset} 
-                pagesCount={max} 
-                max={max}
-                handleNext={()=>handleNext()} 
-                handlePrev={()=>handlePrev()}  
-            />
         </div>
     )
 }

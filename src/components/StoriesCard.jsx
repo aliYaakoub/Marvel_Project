@@ -29,7 +29,7 @@ const StoriesCard = ({item}) => {
                         <h2 className="pb-3"><strong>type : </strong>{item.type}</h2>
                     }
                 </div>
-                <div className="card-back rounded-xl">
+                <div className="card-back rounded-xl  overflow-hidden">
                     {!item.description ?
                         <h2 className='pb-3'>no description available</h2>:
                         <h2 className='pb-3'><strong>Description : </strong><p>{item.description}</p></h2>

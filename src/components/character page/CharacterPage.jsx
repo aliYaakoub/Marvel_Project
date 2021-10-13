@@ -11,6 +11,7 @@ import CharacterStoriesGrid from './CharacterStoriesGrid';
 const CharacterPage = (props) => {
 
     const [item, setItem] = useState([]);
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const hash = '95e95c40e973659f8d7dceea370df138';
@@ -20,6 +21,8 @@ const CharacterPage = (props) => {
         let fetch = async () =>{
             const result = await axios(`https://gateway.marvel.com:443/v1/public/characters/${charID}?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}`)
             setItem(result.data.data.results);
+            setData(result.data);
+            console.log(result.data);
             console.log(result.data.data.results[0]);
         }
         fetch();
@@ -84,6 +87,7 @@ const CharacterPage = (props) => {
                         <Link className='' to={`/characterStories/${charID}`} > See all stories for this Character here &#8594;</Link>
                     </p>
                 </div>
+                <p className='w-full text-white text-center pb-10'>{data.attributionText}</p>
             </div>
             }
         </div>

@@ -7,6 +7,7 @@ import Search from './common/Search';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
 import Offset from './common/offset';
+import LoadingLogo from './common/loadingLogo';
 
 const Home = () => {
     const [items, setItems] = useState([]);
@@ -60,37 +61,45 @@ const Home = () => {
         setOffset(offset - Number(limit));
     }
 
+    let code = '</>';
+
     return (
         <div>
-            {!data.code ===200 ?
-            <div>
-                <h1>sorry we have reached max call per day</h1>
-            </div>:
-            <div className="App h-screen text-white">
-                <div className='flex flex-col w-full'>
-                    <Header />
-                    <Search
-                        value={searchText}
-                        onChange={(e)=>setSearchText(e.target.value)}
-                    />
-                    <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
+            {isLoading ? 
+                <div className='flex items-center justify-center h-screen'>
+                    <LoadingLogo /> 
                 </div>
-                <CharacterGrid items={paginatedItems} isLoading={isLoading} />
-                <Pagination
-                    itemsCount={items.length}
-                    currPage={currentPage}
-                    pageSize={pageSize}
-                    onPageChange={(page)=>setCurrentPage(page)}
-                />
-                <Offset 
-                    limit={limit} 
-                    currentPage={offset} 
-                    pagesCount={max/limit} 
-                    handleNext={()=>handleNext()} 
-                    handlePrev={()=>handlePrev()}  
-                />
-                <p className='w-full text-center pb-10'>{data.attributionText}</p>
-            </div>
+                : 
+                !data.code ===200 ?
+                <div>
+                    <h1>sorry we have reached max call per day</h1>
+                </div>:
+                <div className="App h-screen text-white">
+                    <div className='flex flex-col w-full'>
+                        <Header />
+                        <Search
+                            value={searchText}
+                            onChange={(e)=>setSearchText(e.target.value)}
+                        />
+                        <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
+                    </div>
+                    <CharacterGrid items={paginatedItems} isLoading={isLoading} />
+                    <Pagination
+                        itemsCount={items.length}
+                        currPage={currentPage}
+                        pageSize={pageSize}
+                        onPageChange={(page)=>setCurrentPage(page)}
+                    />
+                    <Offset 
+                        limit={limit} 
+                        currentPage={offset} 
+                        pagesCount={max/limit} 
+                        handleNext={()=>handleNext()} 
+                        handlePrev={()=>handlePrev()}  
+                    />
+                    <p className='w-full text-center pb-10'>{data.attributionText}</p>
+                    <p className='w-full text-center pb-10'>{code} By Ali Yaakoub</p>
+                </div>
             }
         </div>
     );
