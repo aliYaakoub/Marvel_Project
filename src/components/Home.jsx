@@ -27,7 +27,7 @@ const Home = () => {
 
     useEffect(()=>{
         const fetch = async () => {
-            const result = await axios(`http://gateway.marvel.com/v1/public/characters?${ searchText ? `nameStartsWith=${searchText}` : '' }&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=${limit}&offset=${offset}`)
+            const result = await axios(`https://gateway.marvel.com/v1/public/characters?${ searchText ? `nameStartsWith=${searchText}` : '' }&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=${limit}&offset=${offset}`)
             setItems(result.data.data.results);
             setData(result.data);
             console.log(result.data);

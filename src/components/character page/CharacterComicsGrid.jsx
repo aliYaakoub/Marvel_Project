@@ -14,7 +14,7 @@ const CharacterComicsGrid = (props) => {
 
     useEffect(()=>{
         const fetch = async () =>{
-            const result = await axios(`http://gateway.marvel.com/v1/public/characters/${charID}/comics?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=3`);
+            const result = await axios(`https://gateway.marvel.com/v1/public/characters/${charID}/comics?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=3`);
             setItems(result.data.data.results);
             console.log(result.data.data.results);
             setIsLoading(false);
