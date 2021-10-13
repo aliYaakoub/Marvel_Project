@@ -17,7 +17,7 @@ const Pagination = (props) => {
         <nav>
             <ul className='w-full flex flex-row items-center justify-center pb-12'>
                 {pages.map(page=>(
-                    <li className={page===currPage?'px-3 py-1 cursor-pointer hover:bg-red-700 rounded-full mx-5 page-item bg-red-700':'px-3 py-1 cursor-pointer hover:bg-red-700 rounded-full mx-5 page-item'} onClick={()=>onPageChange(page)} key={page}>{page}</li>
+                    <a href="#header"><li className={page===currPage?'px-3 py-1 cursor-pointer hover:bg-red-700 rounded-full mx-5 page-item bg-red-700':'px-3 py-1 cursor-pointer hover:bg-red-700 rounded-full mx-5 page-item'} onClick={()=>onPageChange(page)} key={page}>{page}</li></a>
                 ))}
             </ul>
         </nav>

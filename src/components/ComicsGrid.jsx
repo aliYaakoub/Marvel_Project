@@ -70,6 +70,7 @@ const ComicGridFull = (props) => {
             <div className='flex items-center justify-center h-screen'><LoadingLogo/></div>:
             
             <div className='text-white mt-20'>
+                <div id="header"></div>
                 <div><Link to={`/character/${charID}`} className='z-10 rounded-br-lg text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link></div>
                 <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
                 <div>

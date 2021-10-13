@@ -69,6 +69,7 @@ const EventsGrid = (props) => {
                 <div>
                     <Link to={`/character/${charID}`} className='z-10 text-2xl text-white fixed top-0 left-0 bg-black px-4 py-2'>&#10094; go back</Link>
                 </div>
+                <div id="header"></div>
                 
                 <Limit value={limit} submit={(value)=>handleLimitChange(value)} />
                 {items.length === 0 ?
