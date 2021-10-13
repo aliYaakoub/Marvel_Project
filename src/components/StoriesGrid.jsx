@@ -40,12 +40,16 @@ const StoriesGrid = (props) => {
 
     function handleLimitChange(value){
         setLimit(value);
+        setOffset(0);
         if(value > 40){
             setPageSize(12);
         }
         else{
             setPageSize(6)
         }
+        setTimeout(()=>{
+            alert(`limit set to ${value}`);
+        },500);
     }
     
     function handleNext(){

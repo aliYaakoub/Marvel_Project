@@ -39,12 +39,16 @@ const SeriesGrid = (props) => {
 
     function handleLimitChange(value){
         setLimit(value);
+        setOffset(0);
         if(value > 40){
             setPageSize(6);
         }
         else{
             setPageSize(3)
         }
+        setTimeout(()=>{
+            alert(`limit set to ${value}`);
+        },500);
     }
     
     function handleNext(){

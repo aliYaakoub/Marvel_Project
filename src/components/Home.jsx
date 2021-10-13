@@ -40,6 +40,7 @@ const Home = () => {
 
     function handleLimitChange(value){
         setLimit(value);
+        setOffset(0);
         if(value > 80){
             setPageSize(15);
         }
@@ -52,6 +53,9 @@ const Home = () => {
         else{
             setPageSize(6)
         }
+        setTimeout(()=>{
+            alert(`limit set to ${value}`);
+        },500);
     }
     
     function handleNext(){
