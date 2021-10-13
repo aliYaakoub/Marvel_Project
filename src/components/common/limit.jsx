@@ -21,7 +21,7 @@ const Limit = (props) => {
         <div className='mx-auto w-full sm:w-3/5 mb-5 flex flex-row items-end'>
             {/* <form className='mx-auto w-full sm:w-3/5 mb-5 flex flex-row items-end'> */}
                 <div className='w-full'>
-                    <p className='ml-5 w-full'>max is 100</p>
+                    <p className='ml-5 w-full'>max is 100 per call</p>
                     <input
                         className='w-full h-14 rounded-2xl text-black px-3 outline-none text-xl shadow-xl'
                         type="number"

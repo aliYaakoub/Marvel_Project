@@ -28,10 +28,8 @@ const CharacterComicsGrid = (props) => {
             {isLoading ? <LoadingLogo/>:
                 <div>
                     {items.length===0 ? 
-                    <div className='flex items-center justify-center h-screen'>
-                        <h1 className='text-4xl text-white'>sorry no comics available for this character</h1>
-                    </div> 
-                    : 
+                    <div></div>
+                        : 
                     <div className='w-full text-center text-3xl mt-5 text-white'>
                         <h1 className='mt-12 text-2xl ' >number of comics displayed : {items.length}</h1>
                         <div className='px-10 my-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3'>

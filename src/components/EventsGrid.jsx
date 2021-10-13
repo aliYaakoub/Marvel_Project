@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { paginate } from '../utils/paginate';
 import Pagination from './common/pagination';
 import Limit from './common/limit';
+import Offset from './common/offset';
 import LoadingLogo from '../components/common/loadingLogo';
 
 const EventsGrid = (props) => {
@@ -14,6 +15,9 @@ const EventsGrid = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(3);
+    const [offset, setOffset] = useState(0);
+    // const [data, setData] = useState([]);
+    const [max, setMax] = useState(0);
 
     const hash = '95e95c40e973659f8d7dceea370df138';
     const charID = props.match.params.id;
@@ -22,14 +26,15 @@ const EventsGrid = (props) => {
 
     useEffect(()=>{
         const fetch = async () =>{
-            const result = await axios(`https://gateway.marvel.com:443/v1/public/characters/${charID}/events?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=${limit}`)
+            const result = await axios(`https://gateway.marvel.com:443/v1/public/characters/${charID}/events?&ts=1&apikey=51479b334179b691e910fc943463fd55&hash=${hash}&limit=${limit}&offset=${offset}`)
             setItems(result.data.data.results);
             setIsLoading(false);
+            setMax(result.data.data.total);
             console.log(result.data.data.results);
             setCurrentPage(1);
         }
         fetch();
-    },[charID,limit])
+    },[charID,limit,offset])
 
     function handleLimitChange(value){
         setLimit(value);
@@ -39,6 +44,13 @@ const EventsGrid = (props) => {
         else{
             setPageSize(3)
         }
+    }
+    
+    function handleNext(){
+        setOffset(offset + Number(limit));
+    }
+    function handlePrev(){
+        setOffset(offset - Number(limit));
     }
 
     return (
@@ -65,6 +77,14 @@ const EventsGrid = (props) => {
                 currPage={currentPage}
                 pageSize={pageSize}
                 onPageChange={(page)=>setCurrentPage(page)}
+            />
+            <Offset 
+                limit={limit} 
+                currentPage={offset} 
+                pagesCount={max} 
+                max={max}
+                handleNext={()=>handleNext()} 
+                handlePrev={()=>handlePrev()}  
             />
         </div>
     )
