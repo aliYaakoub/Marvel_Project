@@ -22,7 +22,6 @@ const Home = () => {
     const [pageSize, setPageSize] = useState(6);
 
     const hash = '95e95c40e973659f8d7dceea370df138';
-
     const paginatedItems = paginate(items, currentPage, pageSize);
 
     useEffect(()=>{
